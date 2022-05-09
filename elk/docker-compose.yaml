@@ -1,0 +1,32 @@
+services:
+  elasticsearch:
+    image: elasticsearch:7.17.3
+    environment:
+    - discovery.type=single-node
+    - xpack.security.enabled=false
+    - http.cors.enabled=true
+    - http.cors.allow-origin="https://app.elasticvue.com"
+    ports:
+      - 9200:9200
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - elastic
+
+  kibana:
+    image: kibana:7.17.3
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_URL=http://localhost:9200
+    networks:
+      - elastic
+
+networks:
+  elastic:
+    driver: bridge
+
+volumes:
+  elasticsearch-data:
