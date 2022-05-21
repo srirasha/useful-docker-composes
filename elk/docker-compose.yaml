@@ -1,6 +1,7 @@
 services:
   elasticsearch:
     image: elasticsearch:7.17.3
+    restart: always
     environment:
     - discovery.type=single-node
     - xpack.security.enabled=false
@@ -15,6 +16,7 @@ services:
 
   kibana:
     image: kibana:7.17.3
+    restart: always
     ports:
       - 5601:5601
     depends_on:
