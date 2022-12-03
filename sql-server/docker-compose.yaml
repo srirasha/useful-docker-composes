@@ -1,10 +1,11 @@
 services:
   mssql:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: mcr.microsoft.com/mssql/server:2022-latest
     ports:
       - 1433:1433
     volumes:
-      - ~/apps/mssql/data:/var/lib/mssqlql/data
+      - ~/apps/mssql/data:/var/lib/mssql/data
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=ResidentEvil4!
+      - MSSQL_SA_PASSWORD=ResidentEvil4!
+      # Defaut user is SA
