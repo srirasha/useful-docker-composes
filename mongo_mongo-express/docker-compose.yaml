@@ -1,5 +1,5 @@
+name: mongo_mongo-express
 services:
-
   mongo:
     image: mongo
     restart: always

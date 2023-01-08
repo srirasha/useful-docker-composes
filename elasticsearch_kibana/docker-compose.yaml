@@ -1,3 +1,4 @@
+name: elasticsearch_kibana
 services:
   elasticsearch:
     image: elasticsearch:8.5.1
